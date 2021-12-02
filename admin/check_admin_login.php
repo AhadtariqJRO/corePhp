@@ -59,8 +59,8 @@ if($error == 0)
 				else
 				{
                     $_SESSION["admin_id"] = $row["admin_id"];
-//					$error_admin_password = "Wrong Password";
-//					$error++;
+					$error_admin_password = "Wrong Password";
+					$error++;
 				}
 			}
 		}
