@@ -1,3 +1,4 @@
+
  <?php
 
 //attendance.php
@@ -26,8 +27,11 @@ include('header.php');
               <th>Research Officer Name</th>
               <th>Pak Number</th>
               <th>Lab</th>
-              <th>Attendance Status</th>
-              <th>Attendance Date</th>
+              <th>Total Working Days</th>
+              <th>Presents</th>
+              <th>Absents</th>
+              <th>Medical Leaves</th>
+              <th>Casual Leaves</th>
             </tr>
           </thead>
           <tbody>
@@ -110,7 +114,6 @@ $result = $statement->fetchAll();
                     <th>Research Officer Name</th>
                     <th>Present</th>
                     <th>Absent</th>
-                    <th>Leave</th>
                   </tr>
                 </thead>
                 <?php
@@ -136,10 +139,6 @@ $result = $statement->fetchAll();
                     <td>
                       <input type="radio" name="attendance_status<?php echo $student["student_id"]; ?>" checked value="Absent" />
                     </td>
-                    <td>
-                      <input type="radio" name="attendance_status<?php echo $student["student_id"]; ?>" value="Leave" />
-                    </td>
-
                   </tr>
                 <?php
                 }
@@ -198,13 +197,13 @@ $result = $statement->fetchAll();
 
 <script>
 $(document).ready(function(){
-	
+
   var dataTable = $('#attendance_table').DataTable({
     "processing":true,
     "serverSide":true,
     "order":[],
     "ajax":{
-      url:"attendance_action.php",
+      url:"days_action.php",
       method:"POST",
       data:{action:"fetch"}
     }
@@ -231,7 +230,7 @@ $(document).ready(function(){
   $('#attendance_form').on('submit', function(event){
     event.preventDefault();
     $.ajax({
-      url:"attendance_action.php",
+      url:"days_action.php",
       method:"POST",
       data:$(this).serialize(),
       dataType:"json",
