@@ -40,9 +40,9 @@ if(isset($_GET["action"]))
 			        	<td>
 			        		<table width="100%" border="1" cellpadding="5" cellspacing="0">
 			        			<tr>
-			        				<td><b>Student Name</b></td>
-			        				<td><b>Roll Number</b></td>
-			        				<td><b>Grade</b></td>
+			        				<td><b>Research Officer Name</b></td>
+			        				<td><b>Pak Number</b></td>
+			        				<td><b>Lab</b></td>
 			        				<td><b>Attendance Status</b></td>
 			        			</tr>
 				';

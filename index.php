@@ -24,6 +24,11 @@ include('header.php');
               <th>Research Officer Name</th>
               <th>Pak Number</th>
               <th>Lab</th>
+              <th>Total Working Days</th>
+              <th>Presents</th>
+              <th>Absents</th>
+              <th>Medical Leaves</th>
+              <th>Casual Leaves</th>
               <th>Attendance Percentage</th>
               <th>Report</th>
             </tr>

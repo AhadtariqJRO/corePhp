@@ -30,9 +30,144 @@ function load_grade_list($connect)
 	return $output;
 }
 
+
+function get_total_number_of_days($connect, $student_id)
+{
+    $query = "
+	SELECT 
+		ROUND((SELECT COUNT(*) FROM tbl_attendance 
+		WHERE (attendance_status = 'Present'
+		OR attendance_status = 'Absent'
+		OR attendance_status = 'CLeave'
+		OR attendance_status = 'MLeave')
+		AND student_id = '".$student_id."')) AS percentage FROM tbl_attendance 
+	WHERE student_id = '".$student_id."'
+	";
+    $statement = $connect->prepare($query);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    foreach($result as $row)
+    {
+        if($row["percentage"] > 0)
+        {
+            return $row["percentage"];
+        }
+        else
+        {
+            return 'NA';
+        }
+    }
+}
+
+
+function get_total_number_of_presents($connect, $student_id)
+{
+    $query = "
+	SELECT 
+		ROUND((SELECT COUNT(*) FROM tbl_attendance 
+		WHERE attendance_status = 'Present' 
+		AND student_id = '".$student_id."')) AS percentage FROM tbl_attendance 
+	WHERE student_id = '".$student_id."'
+	";
+    $statement = $connect->prepare($query);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    foreach($result as $row)
+    {
+        if($row["percentage"] > 0)
+        {
+            return $row["percentage"];
+        }
+        else
+        {
+            return 'NA';
+        }
+    }
+}
+
+
+function get_total_number_of_absents($connect, $student_id)
+{
+    $query = "
+	SELECT 
+		ROUND((SELECT COUNT(*) FROM tbl_attendance 
+		WHERE attendance_status = 'Absent' 
+		AND student_id = '".$student_id."')) AS percentage FROM tbl_attendance 
+	WHERE student_id = '".$student_id."'
+	";
+    $statement = $connect->prepare($query);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    foreach($result as $row)
+    {
+        if($row["percentage"] > 0)
+        {
+            return $row["percentage"];
+        }
+        else
+        {
+            return 'NA';
+        }
+    }
+}
+
+
+function get_total_number_of_medical_leaves($connect, $student_id)
+{
+    $query = "
+	SELECT 
+		ROUND((SELECT COUNT(*) FROM tbl_attendance 
+		WHERE attendance_status = 'MLeave' 
+		AND student_id = '".$student_id."')) AS percentage FROM tbl_attendance 
+	WHERE student_id = '".$student_id."'
+	";
+    $statement = $connect->prepare($query);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    foreach($result as $row)
+    {
+        if($row["percentage"] > 0)
+        {
+            return $row["percentage"];
+        }
+        else
+        {
+            return 'NA';
+        }
+    }
+}
+
+
+function get_total_number_of_casual_leaves($connect, $student_id)
+{
+    $query = "
+	SELECT 
+		ROUND((SELECT COUNT(*) FROM tbl_attendance 
+		WHERE attendance_status = 'CLeave' 
+		AND student_id = '".$student_id."')) AS percentage FROM tbl_attendance 
+	WHERE student_id = '".$student_id."'
+	";
+    $statement = $connect->prepare($query);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    foreach($result as $row)
+    {
+        if($row["percentage"] > 0)
+        {
+            return $row["percentage"];
+        }
+        else
+        {
+            return 'NA';
+        }
+    }
+}
+
+
+//for percentage of present
 function get_attendance_percentage($connect, $student_id)
 {
-	$query = "
+    $query = "
 	SELECT 
 		ROUND((SELECT COUNT(*) FROM tbl_attendance 
 		WHERE attendance_status = 'Present' 
@@ -40,22 +175,22 @@ function get_attendance_percentage($connect, $student_id)
 	* 100 / COUNT(*)) AS percentage FROM tbl_attendance 
 	WHERE student_id = '".$student_id."'
 	";
-
-	$statement = $connect->prepare($query);
-	$statement->execute();
-	$result = $statement->fetchAll();
-	foreach($result as $row)
-	{
-		if($row["percentage"] > 0)
-		{
-			return $row["percentage"] . '%';
-		}
-		else
-		{
-			return 'NA';
-		}
-	}
+    $statement = $connect->prepare($query);
+    $statement->execute();
+    $result = $statement->fetchAll();
+    foreach($result as $row)
+    {
+        if($row["percentage"] > 0)
+        {
+            return $row["percentage"] . '%';
+        }
+        else
+        {
+            return 'NA';
+        }
+    }
 }
+
 
 function Get_student_name($connect, $student_id)
 {

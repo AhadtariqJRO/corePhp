@@ -54,9 +54,11 @@ if (isset($_POST["action"])) {
             if ($row["attendance_status"] == "Absent") {
                 $status = '<label class="badge badge-danger">Absent</label>';
             }
-
-            if ($row["attendance_status"] == "Leave") {
-                $status = '<label class="badge badge-primary">Leave</label>';
+            if ($row["attendance_status"] == "MLeave") {
+                $status = '<label class="badge badge-info">Medical Leave</label>';
+            }
+            if ($row["attendance_status"] == "CLeave") {
+                $status = '<label class="badge badge-warning ">Casual Leave</label>';
             }
 
             $sub_array[] = $row["student_name"];
@@ -173,6 +175,11 @@ if (isset($_POST["action"])) {
             $sub_array[] = $row["student_name"];
             $sub_array[] = $row["student_roll_number"];
             $sub_array[] = $row["grade_name"];
+            $sub_array[] = get_total_number_of_days($connect, $row["student_id"]);
+            $sub_array[] = get_total_number_of_presents($connect, $row["student_id"]);
+            $sub_array[] = get_total_number_of_absents($connect, $row["student_id"]);
+            $sub_array[] = get_total_number_of_medical_leaves($connect, $row["student_id"]);
+            $sub_array[] = get_total_number_of_casual_leaves($connect, $row["student_id"]);
             $sub_array[] = get_attendance_percentage($connect, $row["student_id"]);
             $sub_array[] = '<button type="button" name="report_button" id="' . $row["student_id"] . '" class="btn btn-info btn-sm report_button">Report</button>';
             $data[] = $sub_array;
