@@ -64,6 +64,13 @@ if(isset($_POST["action"]))
 			{
 				$status = '<label class="badge badge-danger">Absent</label>';
 			}
+            if ($row["attendance_status"] == "MLeave") {
+                $status = '<label class="badge badge-info">Medical Leave</label>';
+            }
+            if ($row["attendance_status"] == "CLeave") {
+                $status = '<label class="badge badge-warning ">Casual Leave</label>';
+            }
+
 			$sub_array[] = $row["student_name"];
 			$sub_array[] = $row["student_roll_number"];
 			$sub_array[] = $row["grade_name"];

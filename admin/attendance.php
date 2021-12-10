@@ -66,7 +66,7 @@ include('header.php');
       <div class="modal-body">
         <div class="form-group">
           <select name="grade_id" id="grade_id" class="form-control">
-            <option value="">Select Grade</option>
+            <option value="">Select LAB</option>
             <?php
             echo load_grade_list($connect);
             ?>

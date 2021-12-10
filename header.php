@@ -41,10 +41,6 @@ if (!isset($_SESSION["teacher_id"])) {
                 <a class="nav-link" href="profile.php">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="days.php">Days</a>
-            </li>
-
-            <li class="nav-item">
                 <a class="nav-link" href="attendance.php">Attendance</a>
             </li>
             <li class="nav-item">

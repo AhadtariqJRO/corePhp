@@ -202,6 +202,16 @@ $result = $statement->fetchAll();
 			</div>
 		</div>
 		<div class="card-body">
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-md-4 text-right">Image <span class="text-danger">*</span></label>
+                    <div class="col-md-8">
+                        <span id="error_teacher_image" class="text-danger"  ><?php echo $error_teacher_image; ?></span>
+                        <input type="file" name="teacher_image" id="teacher_image" />
+                        <span class="text-muted">Only .jpg and .png allowed</span><br />
+                    </div>
+                </div>
+            </div>
 			<div class="form-group">
 				<div class="row">
 					<label class="col-md-4 text-right">Coordinator Name <span class="text-danger">*</span></label>
@@ -270,16 +280,6 @@ $result = $statement->fetchAll();
 					</div>
 				</div>
 			</div>
-			<div class="form-group">
-				<div class="row">
-					<label class="col-md-4 text-right">Image <span class="text-danger">*</span></label>
-					<div class="col-md-8">
-						<input type="file" name="teacher_image" id="teacher_image" />
-						<span class="text-muted">Only .jpg and .png allowed</span><br />
-						<span id="error_teacher_image" class="text-danger"><?php echo $error_teacher_image; ?></span>
-					</div>
-				</div>
-			</div>
 		</div>
 		<div class="card-footer" align="center">
 			<input type="hidden" name="hidden_teacher_image" id="hidden_teacher_image" />
@@ -317,7 +317,7 @@ $('#teacher_emailid').val("<?php echo $row["teacher_emailid"]; ?>");
 $('#teacher_qualification').val("<?php echo $row["teacher_qualification"]; ?>");
 $('#teacher_grade_id').val("<?php echo $row["teacher_grade_id"]; ?>");
 $('#teacher_doj').val("<?php echo $row["teacher_doj"]; ?>");
-$('#error_teacher_image').html("<img src='admin/teacher_image/<?php echo $row['teacher_image']; ?>' class='img-thumbnail' width='100' />");
+$('#error_teacher_image').html("<img src='admin/teacher_image/<?php echo $row['teacher_image']; ?>' class='img-thumbnail' width='500' />");
 $('#hidden_teacher_image').val('<?php echo $row["teacher_image"]; ?>');
 $('#teacher_id').val("<?php echo $row["teacher_id"];?>");
 
