@@ -121,6 +121,7 @@ if ($total_row > 0) {
 
         var options = {
             title: 'Overall Attendance Analytics',
+            colors: ['#28a745','#ffc107','#17a2b8','#dc3545'],
             hAxis: {
                 title: 'Percentage',
                 minValue: 0,
@@ -129,6 +130,7 @@ if ($total_row > 0) {
             vAxis: {
                 title: 'Attendance Status'
             }
+
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('attendance_pie_chart'));
